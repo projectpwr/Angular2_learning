@@ -11,7 +11,8 @@
     "suppressImplicitAnyIndexErrors": true,
     "typeRoots": [
       "./node_modules/@types/"
-    ]
+    ],
+    "outDir": "./app/js"
   },
   "compileOnSave": true,
   "exclude": [
