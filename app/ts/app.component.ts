@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Hero } from './app/ts/Entities/Hero';
+import { Hero } from './Entities/Hero';
 
 
   const HEROES: Hero[] = [
@@ -19,14 +19,7 @@ import { Hero } from './app/ts/Entities/Hero';
     selector: 'my-app',
     template:`
     <h1>{{title}}</h1>
-    <div *ngIf="selectedHero">
-      <h2>{{selectedHero.name}} details!</h2>
-      <div><label>id: </label>{{selectedHero.id}}</div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]="selectedHero.name" placeholder="name">
-      </div>
-    </div>
+    <my-hero-detail [hero]="selectedHero"></my-hero-detail>
     <h2>My Heroes</h2>
     <ul class="heroes">
     <li *ngFor="let hero of heroes"
@@ -96,7 +89,7 @@ import { Hero } from './app/ts/Entities/Hero';
 export class AppComponent {
   title = 'Tour of Heroes';
   heroes = HEROES;
-  selectedHero;
+  selectedHero:Hero;
   onSelect(hero:Hero): void{
     this.selectedHero = hero;
   };
