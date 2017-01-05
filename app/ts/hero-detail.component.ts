@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { Hero } from './Entities/Hero';
+import { Hero } from './Entities/hero';
 
 @Component({
   selector: 'my-hero-detail',
-  template: `<div *ngIf="hero">
-    <h2>{{hero.name}} details!</h2>
+  template: `<div style="border: solid 1px red; padding:10px;" *ngIf="hero">
+    <h2>Hero: <b>{{hero.name}}</b> details!</h2>
     <div><label>id: </label>{{hero.id}}</div>
     <div>
       <label>name: </label>
@@ -13,6 +13,7 @@ import { Hero } from './Entities/Hero';
   </div>`
 })
 export class HeroDetailComponent {
+  //input decorator preferred
   @Input()
   hero: Hero;
 }

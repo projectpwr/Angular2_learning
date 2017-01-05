@@ -1,22 +1,10 @@
-import { Component } from '@angular/core';
-import { Hero } from './Entities/Hero';
-
-
-  const HEROES: Hero[] = [
-    { id: 11, name: 'Mr. Nice' },
-    { id: 12, name: 'Narco' },
-    { id: 13, name: 'Bombasto' },
-    { id: 14, name: 'Celeritas' },
-    { id: 15, name: 'Magneta' },
-    { id: 16, name: 'RubberMan' },
-    { id: 17, name: 'Dynama' },
-    { id: 18, name: 'Dr IQ' },
-    { id: 19, name: 'Magma' },
-    { id: 20, name: 'Tornado' }
-  ];
+import { OnInit, Component } from '@angular/core';
+import { Hero } from './Entities/hero';
+import { HeroService } from './Services/hero.service';
 
 @Component({
     selector: 'my-app',
+    providers: [HeroService],
     template:`
     <h1>{{title}}</h1>
     <my-hero-detail [hero]="selectedHero"></my-hero-detail>
@@ -86,12 +74,29 @@ import { Hero } from './Entities/Hero';
 })
 
 
-export class AppComponent {
+export class AppComponent implements OnInit{
+  //properties
   title = 'Tour of Heroes';
-  heroes = HEROES;
+  heroes: Hero[];
   selectedHero:Hero;
+
+  //constructor
+  constructor(private heroService: HeroService) {
+
+  };
+
+  //methods
+  //we must implement ngOnInit to satisfy our OnInit interface
+  ngOnInit(): void{
+    this.getHeroes();
+  }
+
+  getHeroes(): void{
+    //act on the promise, call the eroService, then when it calls bac assign its result (h in this cae) to this.heroes
+    this.heroService.getHeroes().then(h =>
+      this.heroes = h);
+  }
   onSelect(hero:Hero): void{
     this.selectedHero = hero;
   };
-
 }
