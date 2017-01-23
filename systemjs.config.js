@@ -7,7 +7,7 @@
     // map tells the System loader where to look for things
     map: {
       // our app is within the app folder
-      app: 'app',
+      app: 'dist',
 
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
@@ -28,7 +28,7 @@
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
       app: {
-        main: './ts/main',
+        main: './app/main',
         defaultExtension: 'js'
       },
       rxjs: {
@@ -38,9 +38,9 @@
     paths: {
       // paths serve as alias
       'npm:': 'node_modules/',
-      'Entities/*': 'app/ts/Entities/*',
-      'Components/*': 'app/ts/Components/*',
-      'Services/*': 'app/ts/Services/*'
+      'Entities/*': 'dist/app/Entities/*',
+      'Components/*': 'dist/app/Components/*',
+      'Services/*': 'dist/app/Services/*'
     }
   });
 })(this);
