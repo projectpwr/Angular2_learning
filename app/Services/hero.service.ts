@@ -13,6 +13,10 @@ export class HeroService {
   }
 
 
+  getHero(heroId:number): Promise<Hero> {
+    return this.getHeroes().then(heroes => heroes.find(h => h.id === heroId);
+  }
+
   //func to simulate slow conection
   getHeroesSlowly(): Promise<Hero[]> {
   return new Promise(resolve => {
