@@ -33,6 +33,10 @@ export class HeroDetailComponent implements OnInit{
     .subscribe(hero => this.hero = hero);
   }
 
+  save(): void {
+    this.heroService.update(this.hero)
+                    .then(() => this.goBack());
+  }
 
   //look inot the CanDeactivate guard to prevent us going back and OUOT of the applicaiton!
   goBack(): void {
